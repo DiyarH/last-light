@@ -22,6 +22,7 @@ public class AsteroidSpawner : MonoBehaviour
         if (timeUntilNextSpawn <= 0.0f)
         {
             var asteroid = Instantiate(asteroids[Random.Range(0, asteroids.Length)].gameObject);
+            asteroid.GetComponent<AsteroidInstanceController>().bounds = bounds;
             int spawnZone = 0;
             //int spawnZone = Random.Range(0, 4);
             Vector3 position = Vector3.zero;
