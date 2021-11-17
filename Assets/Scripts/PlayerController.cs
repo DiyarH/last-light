@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float acceleration;
     [Range(0.0f, 100.0f)]
     public float rotationSpeed;
+    public float terminalVelocity;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +33,6 @@ public class PlayerController : MonoBehaviour
         {
             rigidbody.velocity += forward * acceleration * Time.deltaTime;
         }
+        rigidbody.drag = (float)Math.Exp(rigidbody.velocity.magnitude - terminalVelocity);
     }
 }
