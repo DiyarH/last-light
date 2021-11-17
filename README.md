@@ -8,7 +8,7 @@ Asteroids will constantly spawn off-screen and move towards the screen. Wrapping
 Player movement is very similar to the original "Asteroids" player movement, with rotation at a constant speed and using acceleration to move forward.
 - [X] Player laser shooting
 By pressing spacebar, laser will be shoot from the player position. Once the laser hits an asteroid, both get destroyed.
-- [ ] Asteroid splitting
+- [X] Asteroid splitting
 - [ ] Power mechanic
 Power is a replacement for original life system of "Asteroids". At the start of the game, there is a energy storage in the middle of the screen, holding power. Collision of asteroids with this storage or the player spaceship itself will decrease power, so the player must protect the storage by shooting down the asteroids. Power will go down with player movement and bullet shooting. It can be replenished by collecting powerups from destroyed asteroids and enemy spaceships. When power reaches zero percent, the player loses.
 - [ ] Gameplay HUD
