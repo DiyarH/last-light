@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [Range(0.0f, 100.0f)]
     public float rotationSpeed;
     public float terminalVelocity;
+    public PlayerLaserInstanceController laser;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             rigidbody.velocity += forward * acceleration * Time.deltaTime;
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            var bullet = Instantiate(laser).gameObject;
+            bullet.transform.position = transform.position + (Vector3)forward * 0.2f;
+            bullet.transform.rotation = transform.rotation;
+            bullet.GetComponent<Rigidbody2D>().velocity = forward * 15;
         }
         rigidbody.drag = (float)Math.Exp(rigidbody.velocity.magnitude - terminalVelocity);
     }

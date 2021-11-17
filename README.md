@@ -3,9 +3,9 @@ An "Asteroids" remake as my entry for "Classic Games Remix" Game Jam
 
 ## Features:
 [X] Asteroid spawning
-[ ] Player interaction
-	[ ] Spaceship movement
-	[ ] Laser firing
+[X] Player interaction
+	[X] Spaceship movement
+	[X] Laser firing
 [ ] Game Over screen
 [ ] Power mechanic
 [ ] Enemy spaceships

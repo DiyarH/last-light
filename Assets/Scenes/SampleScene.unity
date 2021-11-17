@@ -416,3 +416,4 @@ MonoBehaviour:
   acceleration: 2.5
   rotationSpeed: 80
   terminalVelocity: 3
+  laser: {fileID: 5724103135324849077, guid: 3525a79fdc9147c489e6178fa8599784, type: 3}
