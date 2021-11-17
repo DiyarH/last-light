@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -588514512948322602}
   m_Layer: 0
   m_Name: AsteroidBig
-  m_TagString: Untagged
+  m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1d47ec69afbbeaa4284b168fd6dcf4fd, type: 3}
   - {fileID: 21300000, guid: 528a87559234cd54faacb612c65af4db, type: 3}
   - {fileID: 21300000, guid: d602ba49c7b2c12488b0196ba38f2a77, type: 3}
+  bounds: {fileID: 0}
 --- !u!50 &-588514512948322602
 Rigidbody2D:
   serializedVersion: 4
