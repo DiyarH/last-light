@@ -20,7 +20,7 @@ public class PlayerLaserInstanceController : LaserInstanceController
     {
         if (collision.gameObject.CompareTag("Asteroid"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<AsteroidInstanceController>().Kill();
             Destroy(this.gameObject);
         }
     }
