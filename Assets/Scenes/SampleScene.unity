@@ -652,6 +652,7 @@ MonoBehaviour:
   acceleration: 2.5
   rotationSpeed: 80
   terminalVelocity: 3
+  energyStorage: {fileID: 135922017}
   laser: {fileID: 5724103135324849077, guid: 3525a79fdc9147c489e6178fa8599784, type: 3}
 --- !u!1 &1607623245
 GameObject:

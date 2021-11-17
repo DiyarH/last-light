@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AsteroidInstanceController;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [Range(0.0f, 100.0f)]
     public float rotationSpeed;
     public float terminalVelocity;
+    public EnergyStorageController energyStorage;
     public PlayerLaserInstanceController laser;
     // Start is called before the first frame update
     void Start()
@@ -42,5 +44,29 @@ public class PlayerController : MonoBehaviour
             bullet.GetComponent<Rigidbody2D>().velocity = forward * 15;
         }
         rigidbody.drag = (float)Math.Exp(rigidbody.velocity.magnitude - terminalVelocity);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Asteroid"))
+        {
+            var size = collision.gameObject.GetComponent<AsteroidInstanceController>().size;
+            switch (size)
+            {
+                case AsteroidSize.Big:
+                    energyStorage.power -= 30;
+                    break;
+                case AsteroidSize.Medium:
+                    energyStorage.power -= 25;
+                    break;
+                case AsteroidSize.Small:
+                    energyStorage.power -= 20;
+                    break;
+                case AsteroidSize.Tiny:
+                    energyStorage.power -= 15;
+                    break;
+            }
+            Destroy(collision.gameObject);
+        }
     }
 }
