@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour
 {
+    public EventManager eventManager;
     public AsteroidInstanceController[] asteroids;
     public float spawnInterval;
     private float timeUntilNextSpawn;
@@ -13,6 +14,12 @@ public class AsteroidSpawner : MonoBehaviour
     {
         bounds = gameObject.GetComponent<Bounds>();
         timeUntilNextSpawn = spawnInterval;
+        eventManager.OnGameLost.AddListener(GameOver);
+    }
+
+    private void GameOver()
+    {
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame

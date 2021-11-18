@@ -5,6 +5,7 @@ using static AsteroidInstanceController;
 
 public class EnergyStorageController : MonoBehaviour
 {
+    public EventManager eventManager;
     public float power = 90.0f;
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,10 @@ public class EnergyStorageController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (power <= 0)
+        {
+            eventManager.OnGameLost.Invoke();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

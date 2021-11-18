@@ -6,6 +6,7 @@ using static AsteroidInstanceController;
 
 public class PlayerController : MonoBehaviour
 {
+    public EventManager eventManager;
     private Rigidbody2D rigidbody;
     [Range(0.0f, 10.0f)]
     public float acceleration;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        eventManager.OnGameLost.AddListener(GameOver);
     }
 
     // Update is called once per frame
@@ -78,5 +80,10 @@ public class PlayerController : MonoBehaviour
             energyStorage.power += collision.gameObject.GetComponent<PowerupInstanceController>().powerRestoreAmount;
             Destroy(collision.gameObject);
         }
+    }
+
+    void GameOver()
+    {
+        gameObject.SetActive(false);
     }
 }
