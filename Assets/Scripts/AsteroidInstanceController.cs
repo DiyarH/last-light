@@ -8,6 +8,7 @@ public class AsteroidInstanceController : MonoBehaviour
     public Sprite[] sprites;
     public Bounds bounds;
     public AsteroidSize size;
+    public int scoreOnDestruction;
     public AsteroidInstanceController smallerPart;
     public PowerupInstanceController powerup;
     // Start is called before the first frame update

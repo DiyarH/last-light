@@ -10,10 +10,17 @@ public class UiManager : MonoBehaviour
     public PlayerController player;
     public Text powerText;
     public Text gameOverText;
+    public Text scoreText;
     // Start is called before the first frame update
     void Start()
     {
-        eventManager.OnGameLost.AddListener(GameOver);   
+        eventManager.OnGameLost.AddListener(GameOver);
+        eventManager.OnAsteroidDestroyed.AddListener(UpdateScoreText);
+    }
+
+    private void UpdateScoreText()
+    {
+        scoreText.text = $"Score: {player.score}";
     }
 
     // Update is called once per frame

@@ -6,8 +6,10 @@ using UnityEngine.Events;
 public class EventManager : MonoBehaviour
 {
     public UnityEvent OnGameLost;
+    public UnityEvent OnAsteroidDestroyed;
     void Awake()
     {
         OnGameLost = new UnityEvent();
+        OnAsteroidDestroyed = new UnityEvent();
     }
 }

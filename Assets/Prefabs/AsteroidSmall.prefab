@@ -117,6 +117,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f83383af9359201489e5b2406d95fa15, type: 3}
   bounds: {fileID: 0}
   size: 2
+  scoreOnDestruction: 200
   smallerPart: {fileID: 934853297071733053, guid: f4436c8412c31cd4ca0e9373316eaa30,
     type: 3}
   powerup: {fileID: 6631787902471621279, guid: 43bf66015e4d93a439c0c0c4bee59c7d, type: 3}

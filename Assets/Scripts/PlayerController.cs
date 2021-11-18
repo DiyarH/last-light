@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public float movementPowerUsage = 0.2f;
     public float rotationPowerUsage = 0.1f;
     public float power = 100.0f;
+    public int score = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,10 +45,12 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            var bullet = Instantiate(laser).gameObject;
-            bullet.transform.position = transform.position + (Vector3)forward * 0.2f;
-            bullet.transform.rotation = transform.rotation;
-            bullet.GetComponent<Rigidbody2D>().velocity = forward * 15;
+            var laserInstance = Instantiate(laser).gameObject;
+            laserInstance.transform.position = transform.position + (Vector3)forward * 0.2f;
+            laserInstance.transform.rotation = transform.rotation;
+            laserInstance.GetComponent<Rigidbody2D>().velocity = forward * 15;
+            laserInstance.GetComponent<PlayerLaserInstanceController>().player = this;
+            laserInstance.GetComponent<PlayerLaserInstanceController>().eventManager = eventManager;
         }
         rigidbody.drag = (float)Math.Exp(rigidbody.velocity.magnitude - terminalVelocity);
         if (power <= 0)

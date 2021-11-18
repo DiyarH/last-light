@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerLaserInstanceController : LaserInstanceController
 {
+    public PlayerController player;
+    public EventManager eventManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,8 @@ public class PlayerLaserInstanceController : LaserInstanceController
     {
         if (collision.gameObject.CompareTag("Asteroid"))
         {
+            player.score += collision.gameObject.GetComponent<AsteroidInstanceController>().scoreOnDestruction;
+            eventManager.OnAsteroidDestroyed.Invoke();
             collision.gameObject.GetComponent<AsteroidInstanceController>().Kill();
             Destroy(this.gameObject);
         }
