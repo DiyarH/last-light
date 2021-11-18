@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public PlayerLaserInstanceController laser;
     public float movementPowerUsage = 0.2f;
     public float rotationPowerUsage = 0.1f;
+    public float laserPowerUsage = 0.5f;
     public float power = 100.0f;
     public int score = 0;
     // Start is called before the first frame update
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
             laserInstance.GetComponent<Rigidbody2D>().velocity = forward * 15;
             laserInstance.GetComponent<PlayerLaserInstanceController>().player = this;
             laserInstance.GetComponent<PlayerLaserInstanceController>().eventManager = eventManager;
+            power -= laserPowerUsage;
         }
         rigidbody.drag = (float)Math.Exp(rigidbody.velocity.magnitude - terminalVelocity);
         if (power <= 0)
