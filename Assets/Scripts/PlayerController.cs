@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public float terminalVelocity;
     public EnergyStorageController energyStorage;
     public PlayerLaserInstanceController laser;
+    public float movementPowerUsage = 0.2f;
+    public float rotationPowerUsage = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,14 +29,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             rigidbody.rotation += rotationSpeed * Time.deltaTime;
+            energyStorage.power -= rotationPowerUsage * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
             rigidbody.rotation -= rotationSpeed * Time.deltaTime;
+            energyStorage.power -= rotationPowerUsage * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.W))
         {
             rigidbody.velocity += forward * acceleration * Time.deltaTime;
+            energyStorage.power -= movementPowerUsage * Time.deltaTime;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
