@@ -68,5 +68,10 @@ public class PlayerController : MonoBehaviour
             }
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.CompareTag("Powerup"))
+        {
+            energyStorage.power += collision.gameObject.GetComponent<PowerupInstanceController>().powerRestoreAmount;
+            Destroy(collision.gameObject);
+        }
     }
 }
