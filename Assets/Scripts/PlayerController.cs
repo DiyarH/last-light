@@ -13,15 +13,14 @@ public class PlayerController : MonoBehaviour
     [Range(0.0f, 100.0f)]
     public float rotationSpeed;
     public float terminalVelocity;
-    public EnergyStorageController energyStorage;
     public PlayerLaserInstanceController laser;
     public float movementPowerUsage = 0.2f;
     public float rotationPowerUsage = 0.1f;
+    public float power = 100.0f;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        eventManager.OnGameLost.AddListener(GameOver);
     }
 
     // Update is called once per frame
@@ -31,17 +30,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             rigidbody.rotation += rotationSpeed * Time.deltaTime;
-            energyStorage.power -= rotationPowerUsage * Time.deltaTime;
+            power -= rotationPowerUsage * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
             rigidbody.rotation -= rotationSpeed * Time.deltaTime;
-            energyStorage.power -= rotationPowerUsage * Time.deltaTime;
+            power -= rotationPowerUsage * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.W))
         {
             rigidbody.velocity += forward * acceleration * Time.deltaTime;
-            energyStorage.power -= movementPowerUsage * Time.deltaTime;
+            power -= movementPowerUsage * Time.deltaTime;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -51,6 +50,10 @@ public class PlayerController : MonoBehaviour
             bullet.GetComponent<Rigidbody2D>().velocity = forward * 15;
         }
         rigidbody.drag = (float)Math.Exp(rigidbody.velocity.magnitude - terminalVelocity);
+        if (power <= 0)
+        {
+            GameOver();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,29 +64,30 @@ public class PlayerController : MonoBehaviour
             switch (size)
             {
                 case AsteroidSize.Big:
-                    energyStorage.power -= 30;
+                    power -= 30;
                     break;
                 case AsteroidSize.Medium:
-                    energyStorage.power -= 25;
+                    power -= 25;
                     break;
                 case AsteroidSize.Small:
-                    energyStorage.power -= 20;
+                    power -= 20;
                     break;
                 case AsteroidSize.Tiny:
-                    energyStorage.power -= 15;
+                    power -= 15;
                     break;
             }
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Powerup"))
         {
-            energyStorage.power += collision.gameObject.GetComponent<PowerupInstanceController>().powerRestoreAmount;
+            power += collision.gameObject.GetComponent<PowerupInstanceController>().powerRestoreAmount;
             Destroy(collision.gameObject);
         }
     }
 
     void GameOver()
     {
+        eventManager.OnGameLost.Invoke();
         gameObject.SetActive(false);
     }
 }

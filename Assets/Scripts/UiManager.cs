@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     public EventManager eventManager;
-    public EnergyStorageController energyStorage;
+    public PlayerController player;
     public Text powerText;
     public Text gameOverText;
     // Start is called before the first frame update
@@ -19,7 +19,7 @@ public class UiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        powerText.text = $"{String.Format("{0:0.0}", energyStorage.power)}%";
+        powerText.text = $"{String.Format("{0:0.0}", player.power)}%";
     }
 
     private void GameOver()
