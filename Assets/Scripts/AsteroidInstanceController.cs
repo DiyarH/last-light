@@ -9,6 +9,7 @@ public class AsteroidInstanceController : MonoBehaviour
     public Bounds bounds;
     public AsteroidSize size;
     public AsteroidInstanceController smallerPart;
+    public PowerupInstanceController powerup;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +61,11 @@ public class AsteroidInstanceController : MonoBehaviour
             part.transform.position = transform.position + (Vector3)partDirection * 0.2f;
             part.GetComponent<Rigidbody2D>().velocity = partDirection * Random.Range(partMinSpeed, 0.8f);
             part.GetComponent<AsteroidInstanceController>().bounds = bounds;
+        }
+        if (powerup != null)
+        {
+            var powerupInstance = Instantiate(powerup).gameObject;
+            powerupInstance.transform.position = transform.position;
         }
         Destroy(this.gameObject);
     }

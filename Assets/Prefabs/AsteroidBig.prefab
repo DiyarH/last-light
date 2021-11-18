@@ -121,6 +121,7 @@ MonoBehaviour:
   size: 0
   smallerPart: {fileID: 2493044993314310496, guid: 4eb57aa52736a5b4ea138b2cdfce227a,
     type: 3}
+  powerup: {fileID: 4042149217820910754, guid: 1f4686d19114b014298d7e1a5a4498c1, type: 3}
 --- !u!50 &-588514512948322602
 Rigidbody2D:
   serializedVersion: 4
