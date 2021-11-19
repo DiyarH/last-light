@@ -128,12 +128,16 @@ public class PlayerController : MonoBehaviour
                     power -= 15;
                     break;
             }
+            if (power < 0)
+                power = 0;
             spaceshipCollisionSound.Play();
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Powerup"))
         {
             power += collision.gameObject.GetComponent<PowerupInstanceController>().powerRestoreAmount;
+            if (power > 100)
+                power = 100;
             Destroy(collision.gameObject);
             powerupSound.Play();
         }
