@@ -22,7 +22,7 @@ public class UiManager : MonoBehaviour
 
     private void UpdateScoreText()
     {
-        scoreText.text = $"Score: {player.score}";
+        scoreText.text = $"Score: {String.Format("{0:000000}", player.score)}";
     }
 
     // Update is called once per frame

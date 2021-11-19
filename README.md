@@ -11,7 +11,7 @@ By pressing spacebar, laser will be shoot from the player position. Once the las
 - [X] Asteroid splitting
 - [X] Power mechanic
 Power is a replacement for original life system of "Asteroids". At the start of the game, the player has full power. Collision of asteroids with player spaceship will decrease power. Player movement and laser shooting also costs power. Power can be replenished by collecting powerups from destroyed asteroids and enemy spaceships. When it reaches zero percent, the player loses.
-- [ ] Gameplay HUD
+- [X] Gameplay HUD
 - [ ] Enemy spaceships
   - [ ] Rammer Enemy
   - [ ] Shooter Enemy
