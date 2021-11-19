@@ -15,6 +15,7 @@ public class AsteroidSpawner : MonoBehaviour
         bounds = gameObject.GetComponent<Bounds>();
         timeUntilNextSpawn = spawnInterval;
         eventManager.OnGameLost.AddListener(GameOver);
+        eventManager.OnGameWon.AddListener(GameOver);
     }
 
     private void GameOver()

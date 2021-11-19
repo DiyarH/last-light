@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float laserPowerUsage = 0.5f;
     public float power = 100.0f;
     public int score = 0;
+    public float remainingTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        remainingTime -= Time.deltaTime;
+        if (remainingTime <= 0)
+        {
+            Win();
+        }
         Vector2 forward = transform.up;
         if (Input.GetKey(KeyCode.A))
         {
@@ -59,6 +65,12 @@ public class PlayerController : MonoBehaviour
         {
             GameOver();
         }
+    }
+
+    private void Win()
+    {
+        eventManager.OnGameWon.Invoke();
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
