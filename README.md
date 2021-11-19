@@ -20,7 +20,7 @@ Emergency mode happens when power goes below a certain threshold. In this mode, 
 - [X] Screens
   - [X] Main Menu
   - [ ] Options
-  - [ ] About
+  - [X] About
   - [X] Game Over screen
   - [X] Winning screen
 Once the player survives long enough, the game is won.
