@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public Bounds bounds;
     public EventManager eventManager;
+    public GameObject fire;
     private Rigidbody2D rigidbody;
     [Range(0.0f, 10.0f)]
     public float acceleration;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool moving = false;
         remainingTime -= Time.deltaTime;
         if (remainingTime <= 0)
         {
@@ -40,16 +42,19 @@ public class PlayerController : MonoBehaviour
         {
             rigidbody.rotation += rotationSpeed * Time.deltaTime;
             power -= rotationPowerUsage * Time.deltaTime;
+            moving = true;
         }
         if (Input.GetKey(KeyCode.D))
         {
             rigidbody.rotation -= rotationSpeed * Time.deltaTime;
             power -= rotationPowerUsage * Time.deltaTime;
+            moving = true;
         }
         if (Input.GetKey(KeyCode.W))
         {
             rigidbody.velocity += forward * acceleration * Time.deltaTime;
             power -= movementPowerUsage * Time.deltaTime;
+            moving = true;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -78,6 +83,7 @@ public class PlayerController : MonoBehaviour
             if (transform.position.y <= bounds.spawnBottomY + 0.7)
                 transform.position = new Vector3(transform.position.x, bounds.spawnTopY - 0.72f, transform.position.z);
         }
+        fire.SetActive(moving);
     }
 
     private void Win()
