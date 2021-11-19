@@ -10,6 +10,12 @@ public class PlayerController : MonoBehaviour
     public EventManager eventManager;
     public GameObject fire;
     private Rigidbody2D rigidbody;
+    public AudioSource laserSound;
+    public AudioSource powerupSound;
+    public AudioSource loseSound;
+    public AudioSource asteroidExplosionSound;
+    public AudioSource engineSound;
+    public AudioSource spaceshipCollisionSound;
     [Range(0.0f, 10.0f)]
     public float acceleration;
     [Range(0.0f, 360.0f)]
@@ -56,6 +62,14 @@ public class PlayerController : MonoBehaviour
             power -= movementPowerUsage * Time.deltaTime;
             moving = true;
         }
+        if (moving && !engineSound.isPlaying)
+        {
+            engineSound.Play();
+        }
+        else if (!moving && engineSound.isPlaying)
+        {
+            engineSound.Stop();
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             var laserInstance = Instantiate(laser).gameObject;
@@ -65,7 +79,9 @@ public class PlayerController : MonoBehaviour
             laserInstance.GetComponent<PlayerLaserInstanceController>().player = this;
             laserInstance.GetComponent<PlayerLaserInstanceController>().eventManager = eventManager;
             laserInstance.GetComponent<PlayerLaserInstanceController>().bounds = bounds;
+            laserInstance.GetComponent<PlayerLaserInstanceController>().aseroidExplosionSound = asteroidExplosionSound;
             power -= laserPowerUsage;
+            laserSound.Play();
         }
         rigidbody.drag = (float)Math.Exp(rigidbody.velocity.magnitude - terminalVelocity);
         if (power <= 0)
@@ -112,17 +128,20 @@ public class PlayerController : MonoBehaviour
                     power -= 15;
                     break;
             }
+            spaceshipCollisionSound.Play();
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Powerup"))
         {
             power += collision.gameObject.GetComponent<PowerupInstanceController>().powerRestoreAmount;
             Destroy(collision.gameObject);
+            powerupSound.Play();
         }
     }
 
     void GameOver()
     {
+        loseSound.Play();
         eventManager.OnGameLost.Invoke();
         gameObject.SetActive(false);
     }

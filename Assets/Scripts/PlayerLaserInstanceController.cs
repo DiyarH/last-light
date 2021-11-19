@@ -7,6 +7,7 @@ public class PlayerLaserInstanceController : LaserInstanceController
     public PlayerController player;
     public EventManager eventManager;
     public Bounds bounds;
+    public AudioSource aseroidExplosionSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,7 @@ public class PlayerLaserInstanceController : LaserInstanceController
             player.score += collision.gameObject.GetComponent<AsteroidInstanceController>().scoreOnDestruction;
             eventManager.OnAsteroidDestroyed.Invoke();
             collision.gameObject.GetComponent<AsteroidInstanceController>().Kill();
+            aseroidExplosionSound.Play();
             Destroy(this.gameObject);
         }
     }

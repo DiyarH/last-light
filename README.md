@@ -17,13 +17,13 @@ Power is a replacement for original life system of "Asteroids". At the start of 
   - [ ] Shooter Enemy
 - [ ] Emergency mode
 Emergency mode happens when power goes below a certain threshold. In this mode, screen becomes black, asteroids and emeny spaceships disappear and a radar gets activated, which can detect position of objects. To restore to normal mode, the player must gather a certain amount of power.
-- [ ] Screens
-  - [ ] Main Menu
+- [X] Screens
+  - [X] Main Menu
   - [ ] Options
   - [ ] About
-  - [ ] Game Over screen
-  - [ ] Winning screen
+  - [X] Game Over screen
+  - [X] Winning screen
 Once the player survives long enough, the game is won.
   - [ ] Leaderboard
-- [ ] SFX
+- [X] SFX
 - [ ] Music
