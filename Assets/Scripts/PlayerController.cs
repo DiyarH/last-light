@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidbody;
     [Range(0.0f, 10.0f)]
     public float acceleration;
-    [Range(0.0f, 100.0f)]
+    [Range(0.0f, 360.0f)]
     public float rotationSpeed;
     public float terminalVelocity;
     public PlayerLaserInstanceController laser;
