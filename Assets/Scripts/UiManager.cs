@@ -39,6 +39,6 @@ public class UiManager : MonoBehaviour
 
     private void Win()
     {
-        gameOverText.text = "You survived until the rescue ship found you.";
+        gameOverText.text = "You were found by the rescue ship!";
     }
 }
