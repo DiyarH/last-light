@@ -692,7 +692,7 @@ MonoBehaviour:
   eventManager: {fileID: 1899638687}
   acceleration: 2.5
   rotationSpeed: 135
-  terminalVelocity: 3
+  terminalVelocity: 1.5
   laser: {fileID: 5724103135324849077, guid: 3525a79fdc9147c489e6178fa8599784, type: 3}
   movementPowerUsage: 0.2
   rotationPowerUsage: 0.1
