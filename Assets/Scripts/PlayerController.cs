@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
             laserInstance.GetComponent<Rigidbody2D>().velocity = forward * 15;
             laserInstance.GetComponent<PlayerLaserInstanceController>().player = this;
             laserInstance.GetComponent<PlayerLaserInstanceController>().eventManager = eventManager;
+            laserInstance.GetComponent<PlayerLaserInstanceController>().bounds = bounds;
             power -= laserPowerUsage;
         }
         rigidbody.drag = (float)Math.Exp(rigidbody.velocity.magnitude - terminalVelocity);

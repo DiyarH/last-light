@@ -6,6 +6,7 @@ public class PlayerLaserInstanceController : LaserInstanceController
 {
     public PlayerController player;
     public EventManager eventManager;
+    public Bounds bounds;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,14 @@ public class PlayerLaserInstanceController : LaserInstanceController
     // Update is called once per frame
     void Update()
     {
-        
+        if (bounds != null)
+        {
+            if ((transform.position.x >= bounds.spawnRightX)
+            || (transform.position.x <= bounds.spawnLeftX)
+            || (transform.position.y >= bounds.spawnTopY)
+            || (transform.position.y <= bounds.spawnBottomY))
+                Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
