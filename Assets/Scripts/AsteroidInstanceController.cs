@@ -47,13 +47,6 @@ public class AsteroidInstanceController : MonoBehaviour
                 partsCount = 2;
                 partMinSpeed = 0.5f;
                 break;
-            case AsteroidSize.Small:
-                partsCount = Random.Range(0, 2);
-                partMinSpeed = 0.7f;
-                break;
-            case AsteroidSize.Tiny:
-                partsCount = 0;
-                break;
         }
         for (int i = 0; i < partsCount; ++i)
         {

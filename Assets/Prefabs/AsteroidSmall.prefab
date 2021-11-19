@@ -118,8 +118,7 @@ MonoBehaviour:
   bounds: {fileID: 0}
   size: 2
   scoreOnDestruction: 200
-  smallerPart: {fileID: 934853297071733053, guid: f4436c8412c31cd4ca0e9373316eaa30,
-    type: 3}
+  smallerPart: {fileID: 0}
   powerup: {fileID: 6631787902471621279, guid: 43bf66015e4d93a439c0c0c4bee59c7d, type: 3}
 --- !u!50 &8284237436144527516
 Rigidbody2D:
