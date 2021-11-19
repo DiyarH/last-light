@@ -6,6 +6,7 @@ using static AsteroidInstanceController;
 
 public class PlayerController : MonoBehaviour
 {
+    public Bounds bounds;
     public EventManager eventManager;
     private Rigidbody2D rigidbody;
     [Range(0.0f, 10.0f)]
@@ -64,6 +65,17 @@ public class PlayerController : MonoBehaviour
         if (power <= 0)
         {
             GameOver();
+        }
+        if (bounds != null)
+        {
+            if (transform.position.x >= bounds.spawnRightX - 0.7)
+                transform.position = new Vector3(bounds.spawnLeftX + 0.72f, transform.position.y, transform.position.z);
+            if (transform.position.x <= bounds.spawnLeftX + 0.7)
+                transform.position = new Vector3(bounds.spawnRightX - 0.72f, transform.position.y, transform.position.z);
+            if (transform.position.y >= bounds.spawnTopY - 0.7)
+                transform.position = new Vector3(transform.position.x, bounds.spawnBottomY + 0.72f, transform.position.z);
+            if (transform.position.y <= bounds.spawnBottomY + 0.7)
+                transform.position = new Vector3(transform.position.x, bounds.spawnTopY - 0.72f, transform.position.z);
         }
     }
 

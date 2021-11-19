@@ -919,6 +919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f7ccd21fd22d34fb885488a3709722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bounds: {fileID: 1395164027}
   eventManager: {fileID: 1899638687}
   acceleration: 2.5
   rotationSpeed: 135
